@@ -5,6 +5,12 @@ I always like to learn new stuff and what better learning experience than AI and
 
 I did the work in Virtual ENV so the files will be for that, specifics of the project are below and the "Requirements.txt" file will include all needed packages which can be installed with the following command: 
 
+Please Install Python Virtual Environment First using : pip install virtualenv
+
+Create VENV: python -m venv "NAME OF VENV"
+
+Activate: source Scripts/activate (GIT BASH)
+
 pip install -r Requirements.txt
 
 Python Version: 3.7.6
