@@ -1,26 +1,27 @@
 from ntpath import join
 from imageai.Detection import ObjectDetection
+from imageai.Detection.Custom import CustomObjectDetection
 import os
+import warnings
+
+#suppress warnings
+warnings.filterwarnings('ignore')
+
 
 executionPath = os.getcwd()
 
-detector = ObjectDetection()
-detector.setModelTypeAsRetinaNet()
+detector = CustomObjectDetection()
+detector.setModelTypeAsYOLOv3()
 
-detector.setModelPath(os.path.join(executionPath, "resnet50_coco_best_v2.1.0.h5"))
+detector.setModelPath("FaceDetectionModel V2.h5")
+
+detector.setJsonPath("detection_config.json")
+
 detector.loadModel()
 
-detections = detector.detectObjectsFromImage(
-    
-    input_image=os.path.join(executionPath,"test2.jpg"),
-    output_image_path=os.path.join(executionPath, "RefactoredImaged.jpg")
-    
-    )
 
-for item in detections:
-    print (item["name"],
-    " : ",
-    item["percentage_probability"])
+detections = detector.detectObjectsFromImage(input_image="pouya2.jpg", output_image_path="pouya2-detected.jpg")
 
 
-
+for detection in detections:
+    print(detection["name"], " : ", detection["percentage_probability"], " : ", detection["box_points"])
